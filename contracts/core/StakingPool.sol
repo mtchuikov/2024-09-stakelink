@@ -117,6 +117,8 @@ contract StakingPool is StakingRewardsPool {
 
         uint256 startingBalance = token.balanceOf(address(this));
 
+        // no need to do this check because it duplicates the existing
+        // one in the PriorityPool.sol contract (see deposit function)
         if (_amount > 0) {
             token.safeTransferFrom(msg.sender, address(this), _amount);
             _depositLiquidity(_data);
